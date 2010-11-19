@@ -17,6 +17,7 @@ This library is open source licenses using GPL. See LICENSE.txt for more info.
 
 ## Roadmap
 
+ * **Finish the Documentation!**
  * Finish implementation of options such as _disabled_, _attributes_, 
  * Offer a wider range of examples
  * Complete the javascript functionality for collapsible fieldsets and the
