@@ -12,6 +12,9 @@ on the GitHub case tracker:
 
     https://github.com/darrenmothersele/php-forms-api/issues
 
+This library is open source licenses using GPL. See LICENSE.txt for more info.
+
+
 ## Roadmap
 
  * Finish implementation of options such as _disabled_, _attributes_, 
