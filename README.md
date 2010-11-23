@@ -14,6 +14,7 @@ on the GitHub case tracker:
 
 This library is open source licenses using GPL. See LICENSE.txt for more info.
 
+Requirements: PHP 5.2.5+
 
 ## Roadmap
 
@@ -87,14 +88,14 @@ This is what happens when you submit a form for processing:
  * Check the incoming request to see if form has been submitted. If this page
    request is the result of a submission then copy the values from the request
    into the form.
- * Run any field processors defined to run before validation.
+ * Run any field processors defined to run before validation (preprocess).
  * Validate the form. If the form was not submitted fail validation without 
    checking anything so the form displays for the first time. If this request
    was the result of submitting this form run all field validators. If any of
    the validators fail set error conditions in the form.
  * If the form was submitted and passed validation run any field processors
-   defined to run after validation. Then check if the submit handler is exists
-   as a php function. 
+   defined to run after validation (postprocess). Then check if the submit 
+   handler is exists as a php function. 
  * If the submit handler is found it is called, passing in 
    the final form object (which can be used to extract the values).
 
@@ -186,7 +187,7 @@ when you need them, or you can have them run automatically during forms
 processing. You can specify processors to run on a field before or after the
 field is passed for validation.  
 
-
+Plain, Trim, LTrim, RTrim, XSS, XSS Weak, 
 
 
 

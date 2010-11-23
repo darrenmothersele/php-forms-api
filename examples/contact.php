@@ -1,21 +1,25 @@
 <?php 
 
+// if sessions are enabled then the form uses a token for extra security against CSRF
+session_start();
 require '../src/form.php';
 
 // Generate a simple contact form
 $form = new cs_form(array('form_id' => 'contact'));
 $form->add_field('name', array(
   'type' => 'textfield',
-  'validate' => array('validate_required'),
+  'validate' => array('required'),
+  'preprocess' => array('trim'),
   'title' => 'Your name',
 ));
 $form->add_field('email', array(
   'type' => 'textfield',
-  'validate' => array('validate_required', 'validate_email'),
+  'validate' => array('required', 'email'),
   'title' => 'Your email address',
 ));
 $form->add_field('message', array(
   'type' => 'textarea',
+  'postprocess' => array('xss'),
   'title' => 'Your message',
 ));
 $form->add_field('submit', array(
@@ -50,11 +54,11 @@ function contact_submit(&$form) {
 <pre style="font-size:10px;"><?php $form->process(); ?></pre>
 <h1>Example Form</h1>
 <?php if ($form->is_submitted()): ?>
-  <!-- we never actually see this because the form is reset during submit -->
+  <!-- if the form was reset during the submit handler we would never see this -->
   <p>Thanks for submitting the form.</p>
 <?php else: ?>
   <?php print $form->render(); ?>
 <?php endif; ?>
-<pre style="font-size:10px;"><?php print_r($form); ?></pre>
+<pre style="font-size:10px;"><?php // print_r($form); ?></pre>
 </body>
 </html>
